@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"GeeDunc"</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 style="color:rgb(39, 40, 56);">Gee Dunc Song Geenerator</h1>
+        <button onclick="getSong()">Write Me A Belter</button>
+        <img id="geePhoto" src="./photos/Neutral4.png" alt="GeeDunc Image" height="480" width="360" class="image-asset">
+        <div style="color:rgb(39, 40, 56);" id="display-lyrics"></div>
+            <h1 style="color:rgb(39, 40, 56);" id="emotion_genre"></h1>
+            <pre style="color:rgb(39, 40, 56);" id="lyrics"></pre>
+</div>
+    <script> 
+    async function getSong(){
+        const response = await fetch('./songs_JSON.json');
+        const data = await response.json();
+        const random_select = [Math.round(Math.random()*(data.song_object.length-1))];
+        const song = data.song_object[random_select];
+        const song_genre = song.genre;
+        const song_emotion = song.emotion;
+        const song_lyrics = song.lyrics;
+        console.log(song_lyrics)
+        document.getElementById('emotion_genre').textContent = "I wrote you a " + song_emotion + " " + song_genre + " song.";
+        document.getElementById('lyrics').textContent = song_lyrics;
+        const chosen_photo = "./photos/" + song_emotion + [Math.round((Math.random() * 2) + 1)] + ".png";
+        document.getElementById('geePhoto').src = chosen_photo;
+        console.log(chosen_photo);
+        } 
+    </script>
+</body>
+</html>
