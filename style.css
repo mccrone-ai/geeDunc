@@ -6,7 +6,8 @@
 }
 
 body,html{
-    height: 240vh;
+    height: 200vh;
+    width: 300vh;
     font-family: 'Roboto';
 }
 
