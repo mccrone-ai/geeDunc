@@ -13,7 +13,7 @@ body,html{
 
 .container{
     height: 200%;
-    width: 200%;
+    width: 220%;
     padding: 1em;
     display: flex;
     flex-direction: column;
